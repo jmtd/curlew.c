@@ -1,0 +1,89 @@
+Script started on Thu Aug 29 10:12:07 1996
+$ make
+        pc -c -berkeley typedefs.p
+        pc -berkeley -o typedefs typedefs.o -ltermcap -lp2c
+        typedefs >st.typ.h
+        chmod a-w st.typ.h
+        sed "s/external;/nonpascal;/" <typecheck1.h >tc.h
+        pc -c -berkeley typecheck1.p
+        cc -c typecheck2.c
+        pc -berkeley -o typecheck typecheck1.o typecheck2.o -ltermcap -lp2c
+        typecheck
+st.typ.h verification ok
+        touch typecheck.ok
+        cc -c -DHELPDIR=\"/usr/local/lib\" -DLOCAL stprim.c
+        cc -c tpprim.c
+        sed "s/external;/nonpascal;/" <st-sun.h >st.h
+        sed "s/external;/nonpascal;/" <tp-sun.h >tp.h
+        p2c cl-sun.p
+Reading include file "st.h"
+setctk, setint, initsoft, closesoft, errorexit, openf, create, iocontrol,
+secure, rewindf, closef, remove, renamf, getline, getcf, putstr, putcf, ffcopy,
+ixcopy, getindex, seek, itoxpc, xtoipc, getfds, prompt, getinf, syscmd, mailer,
+timewait, loguseReading include file "tp.h"
+, initcoding, initshared, cftest, maxrow, maxcol, fieldlimit,
+eraserow, erasebox, rowcopy, rightshift, leftshift, queueprim, textchar,
+sendtoken, setcursor, setmode, erasetoright, insertspace, deletechar,
+soundalarm, scrollup, scrolldown, erasedisplay, erasefields, setfield,
+setupdate, erasetabs, settab, session, reqtoken, getloc, getfield, getmode,
+putmode, getrow, putrow, refresh, tcharacter, ttoken, tsetcursor, tsetmode,
+terasetoright, tinsertspace, tdeletechar, teraseprev, tinsertline, tdeleteline,
+tappendline, tsplitline, tsetfield, checkfield, upkey, downkey, leftkey,
+rightkey, enterkey, nexttabkey, prevtabkey, leftukey, firstnskey, alastnskey,
+ctogglekey, erightkey, ispackey, dcharkey, tryprevious, eprevkey, ilinekey,
+dlinekey, elinekey, alinekey, slinekey, nextfkey, prevfkey, homefkey, newlnkey,
+restartkey, datakey, qcmdsignal, getlogkey, getprimitive, startssmp, stopssmp,
+skipbl, addstr, equal, mapesc, chindex, isdigit_, islower_, isupper_, isletter,
+isalphanum, lowercase, itoc
+cl-sun.p, line 2581: Note: Using % for possibly-negative arguments [317]
+, max, min, scopy, getword, ctoi, length_, append, setstring, appstring,
+getarg, mustopen, mustcreate, fcopy, literal, outdec, slcopy, dodash, getccl,
+stclose, makepat, getpat, locate, omatch, patsize, amatch
+cl-sun.p, line 3209/3710: Warning: Symbol 'Result' was already defined [220]
+, match, makesub, jfcontrol, jwrite, journal, expand
+cl-sun.p, line 3722: Note: Using % for possibly-negative arguments [317]
+, compress
+cl-sun.p, line 3774: Note: Using % for possibly-negative arguments [317]
+, checkpoint, setbuf, getmark, putmark, reverse, blkmove, puttxt, putfiletxt,
+gettxt, copytxt, reptxt, restore, edbufok, clrbuf, nextln, prevln, optpat,
+patscan, getnum, getone, getlist, default_, lndelete, edname, edprompt,
+ctxtimage, header, vbmreset, markblock, viewstate, ruler
+cl-sun.p, line 4658: Note: Using % for possibly-negative arguments [317]
+, filetext, replace, fileimage, fetch, inform, reclaim, flushcb
+cl-sun.p, line 4864: Note: Using % for possibly-negative arguments [317]
+cl-sun.p, line 4880: Note: Using % for possibly-negative arguments [317]
+, lastcb
+cl-sun.p, line 4894: Note: Using % for possibly-negative arguments [317]
+, showposn, showcmd, querymore, shownl
+cl-sun.p, line 4962: Note: Evaluating FOR loop limit before initial value [315]
+cl-sun.p, line 4972: Note: Using % for possibly-negative arguments [317]
+, showc, showstr, showlit, showdec, getfn, linestat, filestat, appcpar,
+doappend, newtext, dodelete, doprint, doread, filebuild, safewrite, dowrite,
+move_, copy_, getrhs, ckp, catsub, subst, fmtdef, width, put, break_, leadbl,
+spread, putword, centre, right, initfmt, fmtpars, text, fiximage, dofmt,
+gettabs, putkeydef, getfkstr, setmask, getswitch, getivalue, doset, doview,
+exitview, startlog, doedit, shtext, shswitch, shnumber, shtstops, shfnkey,
+doshow, help, nullcmd, testverb, cmdverb, docmd, ckglob, doglob, fnkey,
+getprevious, plantkeynbr
+cl-sun.p, line 8024: Note: Using % for possibly-negative arguments [317]
+, getkeydef, subkeytext, cfkcmd, ckyes, context, repchar, gettoken, deltoeol,
+insspaces, delchars, bserases, inslines, dellines, apponeline, splitoneline,
+blockset, blockget, blockreset, verify, align, deltosol, bdeltoeol, bdellines,
+binsspaces, bdelchars, delblanks, bdelblanks, deloneword, delwords, splitline,
+combinelines, paralines, tabinsert, cmessage, openclone, clonetext, insclone,
+lmtmsg, goup, godown, goleft, goright, wordright, wordleft, textlocate,
+wordwrap, delkey, control, fsrequest, initmodes, parsecmd, setrkey, seteobkey
+cl-sun.p, line 9970: Note: Using % for possibly-negative arguments [317]
+, initprofile, resumption, edstart, service, dispatch, startapp, stopapp,
+formprompt, editor, curlew
+
+Translation completed.
+        cc -c cl-sun.c
+        cc -o cl2 cl-sun.o stprim.o tpprim.o -ltermcap -lp2c
+        tbl curlew.t >curlew.l
+        touch all
+$ ./cl2
+130<>[20l[?2h[?3l[?4l[?5l[?6l[?7h[?8h[?9l
+Error bad termcap entry
+$ ^D
+script done on Thu Aug 29 10:14:02 1996
